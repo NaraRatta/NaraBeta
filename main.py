@@ -30,14 +30,18 @@ async def test(ctx):
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("내가 알아 들을 수 있는 단어를 적어줘야지^^")
+
+@bot.command()
+async def nara(ctx):
+  await ctx.send("베타!")
       
 @bot.event
 async def on_message(message):  
     message_content = message.content
-    bad = message_content.find("--") 
+    bad = message_content.find("[post]") 
     print(bad)
     if bad >= 0:
-        await asyncio.sleep(300)
+        await asyncio.sleep(10)
         await message.delete()
     await bot.process_commands(message)
 
